@@ -27,3 +27,7 @@ app.listen(appEnv.port, function() {
 	// print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
 });
+
+app.get('/test', function (req, res) {
+  res.send('Hello World!');
+});
