@@ -1,0 +1,11 @@
+applications:
+- path: .
+  memory: 128M
+  instances: 1
+  domain: eu-gb.mybluemix.net
+  name: genre-classifier
+  host: genre-classifier
+  disk_quota: 1024M
+  services:
+  - Genre-Classifier
+  command: node server.js
