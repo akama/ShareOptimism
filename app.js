@@ -31,3 +31,7 @@ app.listen(appEnv.port, function() {
 app.get('/test', function (req, res) {
   res.send('Hello World!');
 });
+
+app.get('/tweets', function (req, res) {
+  res.send('Here is where the tweets would be, if we had any!');
+});
