@@ -43,7 +43,7 @@ app.listen(appEnv.port, function() {
 });
 
 app.get('/test', function (req, res) {
-  res.send('Hello World!');
+  res.send({user:req.param('userid')});
 });
 
 app.get('/tweets', function (req, res) {
