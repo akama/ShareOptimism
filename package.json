@@ -7,7 +7,9 @@
 	},
 	"dependencies": {
 		"express": "4.12.x",
-		"cfenv": "1.0.x"
+		"cfenv": "1.0.x",
+		"twitter": "1.2.x",
+		"watson-developer-cloud": "0.10.5"
 	},
 	"repository": {},
 	"engines": {
