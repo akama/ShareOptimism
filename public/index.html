@@ -12,6 +12,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
 
 	</head>
@@ -24,7 +25,7 @@
 				<div id="user" class="col-md-offset-3 col-sm-5">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">@</span>
-						<input id="username" type="text" class="form-control" placeholder="Twitter Username" aria-describedby="basic-addon1">
+						<input id="username" type="text" onkeydown="if (event.keyCode == 13) document.getElementById('twitter_btn').click()"/ class="form-control" placeholder="Twitter Username" aria-describedby="basic-addon1">
 					</div>
 				</div>
 				<div id="user" class="col-sm-1">
@@ -69,7 +70,7 @@
 			</div>
 			<div id="help">
 				<p class="help_text col-md-6 col-md-offset-3">
-				This is a simple website that shows how positive or negative a users tweets have been. Simply enter a twitter handle and click the Go button. In short order, you will see the percent of tweets that fall into what catagory.
+				This is a simple website that shows how positive or negative a users tweets have been. Simply enter a twitter handle and click the Go button. In short order, you will see the percent of tweets that fall into what catagory. Here are some examples for you to try: @TheDailyShow, @StephenAtHome, @NASA, @intel, @FoxNews, @BBCNews, and @ForbesTech.
 				</p>
 			</div>
 		</div>
