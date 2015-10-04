@@ -23,6 +23,9 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
+// Watson
+var watson = require('watson-developer-cloud');
+
 // create a new express server
 var app = express();
 
@@ -44,14 +47,13 @@ app.get('/test', function (req, res) {
 });
 
 app.get('/tweets', function (req, res) {
-  
-  
   var params = {screen_name: 'nodejs'};
   client.get('statuses/user_timeline', params, function(error, tweets, response){
 	if (!error) {
-		res.send('Here is where the tweets would be, if we had any!');
+		res.send(tweets);
 	} else {
-		res.send('Something went horrible wrong, I blame solar flares.')
+		console.log(error);
+		res.send('Something went horrible wrong, I blame solar flares.');
 	}
   });
 
