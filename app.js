@@ -44,12 +44,14 @@ app.get('/test', function (req, res) {
 });
 
 app.get('/tweets', function (req, res) {
-  res.send('Here is where the tweets would be, if we had any!');
+  
   
   var params = {screen_name: 'nodejs'};
   client.get('statuses/user_timeline', params, function(error, tweets, response){
 	if (!error) {
-		console.log(tweets);
+		res.send('Here is where the tweets would be, if we had any!');
+	} else {
+		res.send('Something went horrible wrong, I blame solar flares.')
 	}
   });
 
