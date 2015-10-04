@@ -17,10 +17,10 @@ var cfenv = require('cfenv');
 var Twitter = require('twitter');
 
 var client = new Twitter({
-  consumer_key: process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+	consumer_key: process.env.TWITTER_CONSUMER_KEY,
+	consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+	access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+	access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
 // Watson
@@ -35,7 +35,7 @@ var natural_language_classifier = watson.natural_language_classifier({
 
 // Alchemy Language
 var alchemy_language = watson.alchemy_language({
-	  api_key: process.env.ALCHEMY_API
+	api_key: process.env.ALCHEMY_API
 });
 
 // create a new express server
@@ -51,24 +51,30 @@ var appEnv = cfenv.getAppEnv();
 app.listen(appEnv.port, function() {
 
 	// print a message when the server starts listening
-  console.log("server starting on " + appEnv.url);
+	console.log("server starting on " + appEnv.url);
 });
 
 app.get('/test', function (req, res) {
-  res.send({user:req.param('userid')});
+	res.send({user:req.param('userid')});
 });
 
 app.get('/watson', function (req, res) {
 	tweet_storage = {"total": 0, "positive": 0, "negative": 0, "neutral": 0}
-	
+
 	var return_results = function (output) {
 		res.send(output)
 	}
 
 	var output = function (results, total_number) {
 		console.log(results);
-		tweet_storage["total"] += 1;
-		tweet_storage[results["type"]] += 1;
+
+		if ('error' in results) {
+			tweet_storage["total"] += 1;
+		} else {
+			tweet_storage["total"] += 1;
+			tweet_storage[results["type"]] += 1;
+		}
+
 		if (tweet_storage["total"] == total_number) {
 			console.log(tweet_storage);
 			return_results(tweet_storage);
@@ -77,18 +83,19 @@ app.get('/watson', function (req, res) {
 
 	var params = {screen_name: req.param('userid')};
 	client.get('statuses/user_timeline', params, function(error, tweets, response){
-	if (!error) {
-		for (var i = 0; i < tweets.length; i++) {
-			alchemy_language.sentiment({"text": tweets[i]["text"]}, function (err, response) {
-			  if (err)
-			    console.log('error:', err);
-			  else
-			    output(response["docSentiment"], tweets.length);
-			}); 
+		if (!error) {
+			for (var i = 0; i < tweets.length; i++) {
+				alchemy_language.sentiment({"text": tweets[i]["text"]}, function (err, response) {
+					if (err) {
+						console.log('error:', err);
+						output({"error": err}, tweets.length);
+					} else
+						output(response["docSentiment"], tweets.length);
+				});
+			}
+		} else {
+			console.log(error);
+			res.send({"error": "something went wrong, blame the sunshine"});
 		}
-	} else {
-		console.log(error);
-		res.send('Something went horrible wrong, I blame solar flares.');
-	}
 	});
 });

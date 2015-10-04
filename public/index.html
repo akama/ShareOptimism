@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <title>Twitter Sentiment Analysis</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/custom.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
-    
-  </head>
+	<head>
+		<title>Twitter Sentiment Analysis</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/stylesheets/custom.css">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-  <body>
-    <div class="container"> 
-	    <div id="help">
-		    <p class="help_text col-md-6 col-md-offset-3"> 
-		    This is a simple website that shows how positive or negative a users tweets have been. Simply enter a twitter handle and click the Go button. In short order, you will see the percent of tweets that fall into what catagory." 
-		    </p>
-	    </div>
-	     <div id="twitter">
-		<div id="user" class="col-md-offset-3 col-sm-5">
-		    <div class="input-group">
-		      <span class="input-group-addon" id="basic-addon1">@</span>
-		      <input id="username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
-		    </div> 
+
+	</head>
+
+	<body>
+		<div class="container">
+			<div id="twitter">
+				<div id="user" class="col-md-offset-3 col-sm-5">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">@</span>
+						<input id="username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+					</div>
+				</div>
+				<div id="user" class="col-sm-1">
+					<span class="input-group-btn">
+						<button id="twitter_btn" class="btn btn-default" type="button">Go!</button>
+					</span>
+				</div>
+
+			</div>
+
+			<div id="result" class="col-md-offset-3 col-md-6">
+				<div class="progress">
+					<div id="pos_bar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+						<span class="sr-only">40% Complete (success)</span>
+					</div>
+				</div>
+				<div class="progress">
+					<div id="new_bar" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+						<span class="sr-only">20% Complete</span>
+					</div>
+				</div>
+				<div class="progress">
+					<div id="neg_bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+						<span class="sr-only">80% Complete (danger)</span>
+					</div>
+				</div>
+			</div>
+			<div id="help">
+				<p class="help_text col-md-6 col-md-offset-3">
+				This is a simple website that shows how positive or negative a users tweets have been. Simply enter a twitter handle and click the Go button. In short order, you will see the percent of tweets that fall into what catagory.
+				</p>
+			</div>
 		</div>
-		<div id="user" class="col-sm-1">
-		   <span class="input-group-btn">
-		    <button id="twitter_btn" class="btn btn-default" type="button">Go!</button>
-		  </span>  
-		</div>
-		 
-	     </div>
-	     
-	    <div id="result" class="col-md-offset-3 col-md-6">
-		<div class="progress">
-		  <div id="pos_bar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-		    <span class="sr-only">40% Complete (success)</span>
-		  </div>
-		</div>
-		<div class="progress">
-		  <div id="new_bar" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-		    <span class="sr-only">20% Complete</span>
-		  </div>
-		</div>
-		<div class="progress">
-		  <div id="neg_bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-		    <span class="sr-only">80% Complete (danger)</span>
-		  </div>
-		</div>
-	    </div>
-	  </div>
-    <script src="js/semantic-beta.js"></script>
-  </body>
+		<script src="js/semantic-beta.js"></script>
+	</body>
 
 </html>
