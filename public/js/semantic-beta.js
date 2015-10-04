@@ -4,10 +4,10 @@
         var userName = $("#username").val();
         dataUrl += userName;
         console.log(userName);
-        $.get(dataUrl)
+        $.getJSON(dataUrl)
          .done(function(data){
             console.log(data);
-            $("#result").html(data);        
+            $("#result").html(data.user);        
        });   
     });
 
